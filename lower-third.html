@@ -1,0 +1,149 @@
+<html>
+<head>
+  <meta charset="utf-8">
+
+
+<style>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
+@import url(https://fonts.googleapis.com/css?family=Arimo:400,700);
+body {
+  margin: 0;
+  background-color: blue;
+}
+
+@keyframes animation-low-third {
+  0% {
+    left: -120%;
+  }
+  
+  20% {
+    left: 0;
+  }
+}
+
+
+#lowerthird {
+  left: 0;
+  background-color: black;
+  font-family: Open Sans;
+  text-transform: uppercase;
+  line-height: 1;
+  position: absolute;
+  width: 80%;
+  height: 10em;
+  bottom: 1em;
+  overflow: hidden;
+  clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+  animation: 4.2s linear 2 alternate both animation-low-third;
+  display: none;
+}
+
+#lowerthird > div {
+  height: 4em;
+  margin: 1em 8em;
+  position: relative;
+}
+
+
+.mask {
+  overflow: hidden;
+  position: relative;
+}
+
+
+@keyframes animation-1-text-1 {
+  0% {
+    left: -100%;
+  }
+  25% {
+    left: -100%;
+  }
+  45% {
+    left: 0;
+  }
+}
+@keyframes animation-1-text-2 {
+  0% {
+    left: -100%;
+  }
+  25% {
+    left: -100%;
+  }
+  45% {
+    left: 0;
+  }
+}
+#lowerthird > div div {
+  position: absolute;
+}
+#lowerthird > div > div:first-child {
+  font-size: 9em;
+  top: -0.13em;
+  color: #0072c0;
+  animation: 4s cubic-bezier(0.19, 0.76, 0.32, 1) 2 alternate both animation-1-slash;
+}
+#lowerthird > div > div:nth-child(2), #lowerthird > div > div:nth-child(3) {
+  font-size: 3.5em;
+  height: 1.4em;
+  width: 100%;
+  margin-left: 12px;
+  color : white;
+  font-weight: 300;
+}
+#lowerthird > div > div:nth-child(2) div, #lowerthird > div > div:nth-child(3) div {
+  animation: 4s cubic-bezier(0.19, 0.76, 0.32, 1) 2 alternate both;
+}
+#lowerthird > div div:nth-child(2) {
+  top: 0;
+  left: 0.9em;
+}
+#lowerthird > div div:nth-child(2) div {
+  animation-name: animation-1-text-1;
+}
+#lowerthird > div div:nth-child(3) {
+  top: 0.8em;
+  left: 1em;
+  margin-top: 0.7em;
+  font-size: 2.5em;
+}
+#lowerthird > div div:nth-child(3) div {
+  animation-name: animation-1-text-2;
+}
+
+</style>
+</head>
+<body>
+<div id="lowerthird">
+   <div>
+    <div>/</div>
+    <div class="mask">
+      <div id="lowerthirdHeader">Javi Moreno</div>
+    </div>
+    <div class="mask">
+      <div id="lowerthirdLine" >@ciberado</div>
+    </div>
+  </div>
+</div>
+</body>
+
+
+<script>
+  
+  document.querySelector('#lowerthird').addEventListener('animationend', (evt) => {
+    setTimeout(() => {
+      document.querySelector('#lowerthird').style.display='none';
+    }, 250);
+  });
+
+  function showLowerThird(header, line) {
+    document.querySelector('#lowerthirdHeader').innerText = header;
+    document.querySelector('#lowerthirdLine').innerText = line;
+    document.querySelector('#lowerthird').style.display='block';
+  }
+
+  showLowerThird('hola', 'lorem ipsum et dolor mantis.');
+
+</script>
+
+
+</html>
