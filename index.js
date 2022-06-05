@@ -34,7 +34,7 @@ const record = require('record-page');
     framesDir: tmpDir
   });
 
-  console.log('Finished, video.mp4 generated!');
+  console.log('Done.');
 
   fs.rmSync(tmpDir, { recursive: true, force: true });
   

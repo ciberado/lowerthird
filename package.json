@@ -1,6 +1,6 @@
 {
   "name": "lowerthird",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "This cli tool will help you to generate lower third banners videos (with a fine green screen background) just like those you see in the streaming shows.",
   "main": "index.js",
   "bin": {
