@@ -1,5 +1,7 @@
+#! /usr/bin/env node
+
 const fs = require('fs');
-const fsExtra = require('fs-extra');
+
 const commandLineArgs = require('command-line-args')
 
 const record = require('record-page');
@@ -25,7 +27,7 @@ const record = require('record-page');
   console.info(`Generating ${options.output} video at ${options.fps} fps for ${options.seconds} seconds.`);
 
   await record({
-	  url: `file://${__dirname}/lower-third.html`,
+	  url: `file://${__dirname}/lower-third.html?title=${options.title}&message=${options.message}`,
     filename : options.output,
     framesPerSecond: options.fps,
     maxFramesCount : 60 * options.seconds,
@@ -34,11 +36,10 @@ const record = require('record-page');
 
   console.log('Finished, video.mp4 generated!');
 
-  fsExtra.emptyDirSync(tmpDir);
-
-  /*
+  fs.rmSync(tmpDir, { recursive: true, force: true });
+  
   fs.readdirSync(__dirname)
     .filter(f => f.indexOf('lighthouse') !== -1)
-    .forEach(d => fsExtra.emptyDirSync(d));
-  */
+    .forEach(d => fs.rmSync(__dirname + '/' + d, {recursive: true, force: true}));
+  
 })();

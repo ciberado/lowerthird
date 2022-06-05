@@ -135,13 +135,16 @@ body {
     }, 250);
   });
 
-  function showLowerThird(header, line) {
-    document.querySelector('#lowerthirdHeader').innerText = header;
-    document.querySelector('#lowerthirdLine').innerText = line;
+  function showLowerThird(title, message) {
+    document.querySelector('#lowerthirdHeader').innerText = title;
+    document.querySelector('#lowerthirdLine').innerText = message;
     document.querySelector('#lowerthird').style.display='block';
   }
 
-  showLowerThird('hola', 'lorem ipsum et dolor mantis.');
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const params = Object.fromEntries(urlSearchParams.entries());
+
+  showLowerThird(params.title, params.message);
 
 </script>
 
